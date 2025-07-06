@@ -54,19 +54,60 @@ static int[] guess_score(int[] code, int[] guess)
     return result;
 }
 
-string code_int = "2800"; //code
-int t = 10; //attempts
 
+// main *******
+
+string code_int = "2800"; //code
+int attempts = 10; //attempts
 bool code_found = false;
-int attempt_counter = 0; //attempt counter
+int round = 0; //attempt counter
 int[] code = code_int.Select(x => x - 48).ToArray();
 
-string guess_int = "3008"; //code
-int[] guess = convert_guess(guess_int);
+// string guess_int = "3008"; //code
+// int[] guess = convert_guess(guess_int);
 
-Console.WriteLine("is valid? " + string.Join(", ", guess));
+Console.WriteLine("Will you find the secret code?\nPlease enter a valid guess");
 
-Console.WriteLine("score: " + string.Join(", ", guess_score(code, guess)));
+while (!code_found && round < attempts)
+{
+    bool valid_guess = false;
+
+    Console.WriteLine($"---\nRound {round}");
+
+    while (!valid_guess)
+    {
+        // ask for input
+        string guess_string = Console.ReadLine();
+        int[] guess = convert_guess(guess_string);
+
+        if (guess.Length == 0)
+        {
+            Console.WriteLine("\nWrong input!");
+        }
+        else
+        {
+            valid_guess = true;
+            // get guess score
+            int[] score = guess_score(code, guess);
+
+            if (score[0] == 4)
+            {
+                Console.WriteLine("Congratz! You did it! ");
+                code_found = true;
+                break;
+            }
+
+            Console.WriteLine("Well placed pieces:" + score[0]);
+            Console.WriteLine("Misplaced pieces:" + score[1]);
+        }
+    }
+
+    round = round + 1;
+}
+
+// Console.WriteLine("is valid? " + string.Join(", ", guess));
+
+// Console.WriteLine("score: " + string.Join(", ", guess_score(code, guess)));
 
 
 // while (!code_found && t_i < 10)
