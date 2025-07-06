@@ -1,0 +1,15 @@
+/Users/besmelhalshaalan/Documents/mastermind-game/Mastermind/bin/Debug/net9.0/Mastermind
+/Users/besmelhalshaalan/Documents/mastermind-game/Mastermind/bin/Debug/net9.0/Mastermind.deps.json
+/Users/besmelhalshaalan/Documents/mastermind-game/Mastermind/bin/Debug/net9.0/Mastermind.runtimeconfig.json
+/Users/besmelhalshaalan/Documents/mastermind-game/Mastermind/bin/Debug/net9.0/Mastermind.dll
+/Users/besmelhalshaalan/Documents/mastermind-game/Mastermind/bin/Debug/net9.0/Mastermind.pdb
+/Users/besmelhalshaalan/Documents/mastermind-game/Mastermind/obj/Debug/net9.0/Mastermind.GeneratedMSBuildEditorConfig.editorconfig
+/Users/besmelhalshaalan/Documents/mastermind-game/Mastermind/obj/Debug/net9.0/Mastermind.AssemblyInfoInputs.cache
+/Users/besmelhalshaalan/Documents/mastermind-game/Mastermind/obj/Debug/net9.0/Mastermind.AssemblyInfo.cs
+/Users/besmelhalshaalan/Documents/mastermind-game/Mastermind/obj/Debug/net9.0/Mastermind.csproj.CoreCompileInputs.cache
+/Users/besmelhalshaalan/Documents/mastermind-game/Mastermind/obj/Debug/net9.0/Mastermind.sourcelink.json
+/Users/besmelhalshaalan/Documents/mastermind-game/Mastermind/obj/Debug/net9.0/Mastermind.dll
+/Users/besmelhalshaalan/Documents/mastermind-game/Mastermind/obj/Debug/net9.0/refint/Mastermind.dll
+/Users/besmelhalshaalan/Documents/mastermind-game/Mastermind/obj/Debug/net9.0/Mastermind.pdb
+/Users/besmelhalshaalan/Documents/mastermind-game/Mastermind/obj/Debug/net9.0/Mastermind.genruntimeconfig.cache
+/Users/besmelhalshaalan/Documents/mastermind-game/Mastermind/obj/Debug/net9.0/ref/Mastermind.dll
