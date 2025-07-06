@@ -31,17 +31,42 @@ static int[] convert_guess(string guess)
 }
 
 
-string c = "2800"; //code
+// returns [well-placed, misplaced]
+static int[] guess_score(int[] code, int[] guess)
+{
+    int[] result = [0, 0];
+
+    for (int i = 0; i < 4; i++)
+    {
+        // well-placed
+        if (code[i] == guess[i])
+        {
+            result[0] = result[0] + 1;
+        }
+
+        // misplaced
+        else if (code.Contains(guess[i]))
+        {
+            result[1] = result[1] + 1;
+        }
+    }
+
+    return result;
+}
+
+string code_int = "2800"; //code
 int t = 10; //attempts
 
 bool code_found = false;
 int attempt_counter = 0; //attempt counter
-int[] c_array = c.Select(x => x - 48).ToArray();
+int[] code = code_int.Select(x => x - 48).ToArray();
 
-string guess = "3048"; //code
+string guess_int = "3008"; //code
+int[] guess = convert_guess(guess_int);
 
-Console.WriteLine("is valid? " + string.Join(", ", convert_guess(guess)));
+Console.WriteLine("is valid? " + string.Join(", ", guess));
 
+Console.WriteLine("score: " + string.Join(", ", guess_score(code, guess)));
 
 
 // while (!code_found && t_i < 10)
