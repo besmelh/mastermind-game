@@ -56,25 +56,37 @@ static int[] guess_score(int[] code, int[] guess)
     return result;
 }
 
+static int[] random_code()
+{
+    Random random = new Random();
+    int[] code = [0, 0, 0, 0];
+    int[] possible_int = { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+    for (int i = 0; i < 4; i++)
+    {
+        code[i] = possible_int[random.Next(0, possible_int.Length)];
+    }
+
+    return code;
+}
+
 
 // main *******
 
+
+// default values
 string code_string = ""; //code
 int attempts = 10; //attempts
+int[] code = random_code();
 
-Console.WriteLine(args.Length);
+// rewrite values if specified by player
+Console.WriteLine("args:", args.Length);
 for (int i = 0; i < args.Length; i++)
 {
-    // if (args.Contains("-c"))
-    // {
     int c_i = Array.FindIndex(args, x => x.Contains("-c"));
     if (c_i != -1)
     {
         code_string = args[c_i + 1];
-    }
-    else
-    {
-        // generate random
+        code = code_string.Select(x => x - 48).ToArray();
     }
 
     int t_i = Array.FindIndex(args, x => x.Contains("-t"));
@@ -84,11 +96,14 @@ for (int i = 0; i < args.Length; i++)
     }
 }
 
+
+
 bool code_found = false;
 int round = 0; //attempt counter
-int[] code = code_string.Select(x => x - 48).ToArray();
 
 Console.WriteLine("Will you find the secret code?\nPlease enter a valid guess");
+// Console.WriteLine($"code: {string.Join(", ", code)}");
+// Console.WriteLine($"attempts: {attempts}");
 
 while (!code_found && round < attempts)
 {
