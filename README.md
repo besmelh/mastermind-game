@@ -37,7 +37,13 @@ dotnet publish -c Release -o ./publish
 After building, execute the program as follows:
 
 ```bash
-Mastermind/publish/Mastermind -c "3241" -t 8
+Mastermind/publish/Mastermind -c [CODE] -t [ATTEMPTS]
+```
+
+Example:
+
+```bash
+Mastermind/publish/Mastermind -c "0123" -t 8
 ```
 
 ---
