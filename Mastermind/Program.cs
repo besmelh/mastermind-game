@@ -3,6 +3,8 @@
 
 // guess to int array -- return empty array if guess in invalid
 // guess is valid a format if: it only has 4 numbers within 0-8
+using System.Security.Permissions;
+
 static int[] convert_guess(string guess)
 {
     int[] result = { };
@@ -57,14 +59,34 @@ static int[] guess_score(int[] code, int[] guess)
 
 // main *******
 
-string code_int = "2800"; //code
+string code_string = ""; //code
 int attempts = 10; //attempts
+
+Console.WriteLine(args.Length);
+for (int i = 0; i < args.Length; i++)
+{
+    // if (args.Contains("-c"))
+    // {
+    int c_i = Array.FindIndex(args, x => x.Contains("-c"));
+    if (c_i != -1)
+    {
+        code_string = args[c_i + 1];
+    }
+    else
+    {
+        // generate random
+    }
+
+    int t_i = Array.FindIndex(args, x => x.Contains("-t"));
+    if (t_i != -1)
+    {
+        attempts = Int32.Parse(args[t_i + 1]);
+    }
+}
+
 bool code_found = false;
 int round = 0; //attempt counter
-int[] code = code_int.Select(x => x - 48).ToArray();
-
-// string guess_int = "3008"; //code
-// int[] guess = convert_guess(guess_int);
+int[] code = code_string.Select(x => x - 48).ToArray();
 
 Console.WriteLine("Will you find the secret code?\nPlease enter a valid guess");
 
@@ -109,8 +131,3 @@ while (!code_found && round < attempts)
 
 // Console.WriteLine("score: " + string.Join(", ", guess_score(code, guess)));
 
-
-// while (!code_found && t_i < 10)
-// {
-
-// }
