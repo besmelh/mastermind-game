@@ -24,11 +24,8 @@ Ensure you have **.NET SDK installed** (version 6.0 or above).
 
 1. Clone or download this repository.
 2. Open terminal in the root directory.
-3. Run:
-
-```bash
-dotnet publish -c Release -o ./publish
-```
+3. `cd Mastermind`
+4. `dotnet publish -c Release -o ./publish`
 
 ---
 
@@ -37,13 +34,13 @@ dotnet publish -c Release -o ./publish
 After building, execute the program as follows:
 
 ```bash
-Mastermind/publish/Mastermind -c [CODE] -t [ATTEMPTS]
+publish/Mastermind -c [CODE] -t [ATTEMPTS]
 ```
 
 Example:
 
 ```bash
-Mastermind/publish/Mastermind -c "0123" -t 8
+publish/Mastermind -c "0123" -t 8
 ```
 
 ---
