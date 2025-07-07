@@ -7,6 +7,9 @@ using System.Security.Permissions;
 
 static int[] convert_guess(string guess)
 {
+    // protective step
+    if (guess == null) return Array.Empty<int>();
+
     int[] result = { };
 
     // check length = 4
@@ -56,14 +59,18 @@ static int[] guess_score(int[] code, int[] guess)
     return result;
 }
 
+// random code with distinct pieces
 static int[] random_code()
 {
     Random random = new Random();
-    int[] code = [0, 0, 0, 0];
-    int[] possible_int = { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+    List<int> pieces = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+    int[] code = new int[4];
+
     for (int i = 0; i < 4; i++)
     {
-        code[i] = possible_int[random.Next(0, possible_int.Length)];
+        int rand_i = random.Next(0, pieces.Count);
+        code[i] = pieces[rand_i];
+        pieces.RemoveAt(rand_i);
     }
 
     return code;
@@ -114,7 +121,16 @@ while (!code_found && round < attempts)
     while (!valid_guess)
     {
         // ask for input
+        Console.Write(">");
         string guess_string = Console.ReadLine();
+
+        // in case string is null - mainly for EOF handling
+        if (guess_string == null)
+        {
+            Console.WriteLine("\nEnd of input detected. Exiting game.");
+            Environment.Exit(0); // clean exit
+        }
+
         int[] guess = convert_guess(guess_string);
 
         if (guess.Length == 0)
@@ -143,6 +159,5 @@ while (!code_found && round < attempts)
 }
 
 // Console.WriteLine("is valid? " + string.Join(", ", guess));
-
 // Console.WriteLine("score: " + string.Join(", ", guess_score(code, guess)));
 
