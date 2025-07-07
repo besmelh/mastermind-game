@@ -1,10 +1,27 @@
 ﻿// See https://aka.ms/new-console-template for more information
 // Console.WriteLine("Hello, World!");
 
+// Helper functions **************************
+
+// random code with distinct pieces
+static int[] random_code()
+{
+    Random random = new Random();
+    List<int> pieces = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+    int[] code = new int[4];
+
+    for (int i = 0; i < 4; i++)
+    {
+        int rand_i = random.Next(0, pieces.Count);
+        code[i] = pieces[rand_i];
+        pieces.RemoveAt(rand_i);
+    }
+
+    return code;
+}
+
 // guess to int array -- return empty array if guess in invalid
 // guess is valid a format if: it only has 4 numbers within 0-8
-using System.Security.Permissions;
-
 static int[] convert_guess(string guess)
 {
     // protective step
@@ -59,26 +76,10 @@ static int[] guess_score(int[] code, int[] guess)
     return result;
 }
 
-// random code with distinct pieces
-static int[] random_code()
-{
-    Random random = new Random();
-    List<int> pieces = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
-    int[] code = new int[4];
-
-    for (int i = 0; i < 4; i++)
-    {
-        int rand_i = random.Next(0, pieces.Count);
-        code[i] = pieces[rand_i];
-        pieces.RemoveAt(rand_i);
-    }
-
-    return code;
-}
 
 
-// main *******
 
+// main *********************************
 
 // default values
 string code_string = ""; //code
@@ -86,20 +87,30 @@ int attempts = 10; //attempts
 int[] code = random_code();
 
 // rewrite values if specified by player
-Console.WriteLine("args:", args.Length);
 for (int i = 0; i < args.Length; i++)
 {
-    int c_i = Array.FindIndex(args, x => x.Contains("-c"));
-    if (c_i != -1)
+    if (args[i] == "-c" && i + 1 < args.Length)
     {
-        code_string = args[c_i + 1];
-        code = code_string.Select(x => x - 48).ToArray();
+        code_string = args[i + 1];
+        int[] converted_code = convert_guess(code_string);
+
+        // in case provided code is invalid
+        if (converted_code.Length == 0)
+        {
+            Console.WriteLine("\nInvalid code provided via -c. Will use another random code.\n");
+        }
+        else
+        {
+            code = converted_code;
+        }
+
+        i++;
     }
 
-    int t_i = Array.FindIndex(args, x => x.Contains("-t"));
-    if (t_i != -1)
+    else if (args[i] == "-t" && i + 1 < args.Length)
     {
-        attempts = Int32.Parse(args[t_i + 1]);
+        Int32.TryParse(args[i + 1], out attempts);
+        i++;
     }
 }
 
@@ -150,14 +161,10 @@ while (!code_found && round < attempts)
                 break;
             }
 
-            Console.WriteLine("Well placed pieces:" + score[0]);
-            Console.WriteLine("Misplaced pieces:" + score[1]);
+            Console.WriteLine("Well placed pieces: " + score[0]);
+            Console.WriteLine("Misplaced pieces: " + score[1]);
         }
     }
 
-    round = round + 1;
+    round++;
 }
-
-// Console.WriteLine("is valid? " + string.Join(", ", guess));
-// Console.WriteLine("score: " + string.Join(", ", guess_score(code, guess)));
-
