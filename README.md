@@ -1,5 +1,11 @@
 # Mastermind Game
 
+## 🔗 **Github Repository Link**
+
+[GitHub Repository](https://github.com/besmelh/mastermind-game)
+
+---
+
 ## 📝 **Description**
 
 This is a console implementation of the classic **Mastermind** written in **C#**.
