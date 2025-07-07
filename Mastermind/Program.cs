@@ -89,13 +89,14 @@ int[] code = random_code();
 // rewrite values if specified by player
 for (int i = 0; i < args.Length; i++)
 {
+    // get code from the given argument
     if (args[i] == "-c" && i + 1 < args.Length)
     {
         code_string = args[i + 1];
         int[] converted_code = convert_guess(code_string);
 
-        // in case provided code is invalid
-        if (converted_code.Length == 0)
+        // in case provided code is invalid -- make sure to check its values are distinct
+        if (converted_code.Length == 0 || converted_code.Length != converted_code.Distinct().Count())
         {
             Console.WriteLine("\nInvalid code provided via -c. Will use another random code.\n");
         }
@@ -107,6 +108,7 @@ for (int i = 0; i < args.Length; i++)
         i++;
     }
 
+    // get attempt count from the given argument
     else if (args[i] == "-t" && i + 1 < args.Length)
     {
         Int32.TryParse(args[i + 1], out attempts);

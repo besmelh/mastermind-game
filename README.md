@@ -1,4 +1,4 @@
-# Mastermind
+# Mastermind Game
 
 ## 📝 **Description**
 
@@ -18,13 +18,6 @@ This is a console implementation of the classic **Mastermind** written in **C#**
 
 ---
 
-## ⚙️ **Program Arguments**
-
-- `-c [CODE]`: Specifies the secret code (must be 4 distinct digits from 0-8). If not provided, a random code is generated. Example: `-c "0123"`.
-- `-t [ATTEMPTS]`: Specifies the number of attempts allowed. Defaults to **10** if not provided.Example: `-t 10`.
-
----
-
 ## 🚀 **Building the Project**
 
 Ensure you have **.NET SDK installed** (version 6.0 or above).
@@ -35,5 +28,21 @@ Ensure you have **.NET SDK installed** (version 6.0 or above).
 
 ```bash
 dotnet publish -c Release -o ./publish
-``
 ```
+
+---
+
+## ▶️ Running the Program
+
+After building, execute the program as follows:
+
+```bash
+Mastermind/publish/Mastermind -c "3241" -t 8
+```
+
+---
+
+## ⚙️ **Program Arguments**
+
+- `-c [CODE]`: Specifies the secret code (must be 4 distinct digits from 0-8). If not provided, a random code is generated. Example: `-c "0123"`.
+- `-t [ATTEMPTS]`: Specifies the number of attempts allowed. Defaults to **10** if not provided.Example: `-t 10`.
