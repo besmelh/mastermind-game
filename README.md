@@ -1,8 +1,8 @@
 # Mastermind Game
 
-## 🔗 **Repository Link**
+## 🔗 **Github Repository Link**
 
-[GitHub Repository](https://github.com/besmelh/mastermind-game)
+https://github.com/besmelh/mastermind-game
 
 ---
 
